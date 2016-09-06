@@ -1,11 +1,13 @@
 import charttool from './chart-tool/index';
 import jquery from './jquery/index';
 import bootstrap from './bootstrap/index';
+import tablesaw from './tablesaw/index';
 
 const exports = [
   charttool(),
   jquery(),
-  bootstrap()
+  bootstrap(),
+  tablesaw()
 ];
 
 // might be unnecessary if we just take the implicit order from up above

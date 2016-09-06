@@ -1,0 +1,13 @@
+{
+  "name": "tablesaw",
+  "priority": 200,
+  "basepath": "http://beta.images.theglobeandmail.com/static/templates/table-d-hote",
+  "versions": {
+    "1.0.5": {
+      "footer": [
+        "/style/tablesaw.min.v1.css",
+        "/scripts/tablesaw.min.v2.js"
+      ]
+    }
+  }
+}

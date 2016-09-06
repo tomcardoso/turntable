@@ -1,7 +1,6 @@
-import scripts from '../lib/loadJS';
+import loadJS from '../lib/loadJS';
 import * as styles from '../lib/loadCSS';
 import deps from '../plugins/export';
-import { loadSync } from './load'
 
 export default (function() {
 
@@ -12,76 +11,94 @@ export default (function() {
 
   var d = deps.length;
 
-  const headers = [];
+  const headers = [],
+    footers = [];
 
   while (d--) {
-    if (deps[d].assets.header && deps[d].assets.header.length) {
-      headers.push({
-        name: deps[d].name,
-        basepath: deps[d].basepath,
-        assets: deps[d].assets.header
-      });
-    }
+    ['header', 'footer'].forEach(function(type) {
+      if (this.assets[type] && this.assets[type].length) {
+        let arr = type === 'header' ? headers : footers;
+        arr.push({
+          name: this.name,
+          basepath: this.basepath,
+          assets: this.assets[type]
+        });
+      }
+    }, deps[d]);
   }
 
   if (headers.length) {
-    loadHeaders(headers, function() {
-      console.log("headers loaded!");
+    loadAssets(headers, () => {
+      if (footers.length) {
+        // bind to some kind of domready event?
+        loadAssets(footers, noop);
+      }
     });
+  } else if (footers.length) {
+    // bind to some kind of domready event?
+    loadAssets(footers, noop);
   }
-
-  // for (var i = 0; i < deps.length; i++) {
-  //   loadDep(deps[i]);
-  // }
 
 })();
 
-function resolve(basepath, file) {
+function noop() {}
 
-}
-
-function loadHeaders(headers, cb) {
-  let h = headers.length;
-  let counter = 0;
-  while (h--) {
-    loadDep(headers[h], loadSync, function() {
-      counter++;
-      if (counter === headers.length) {
+function loadAssets(depList, cb) {
+  const depLength = depList.length;
+  let d = depList.length,
+    counter = 0;
+  while (d--) {
+    loadLoop(depList[d], depList[d].assets, () => {
+      if (counter === depLength - 1) {
         cb();
+      } else {
+        counter++;
       }
     });
   }
 }
 
-// function loadSync(param, cb) {
-//   console.log(param);
-// }
-
-function loadDeps(deps) {
-  for (var i = 0; i < deps.length; i++) {
-    loadDep(deps[i]);
+function loadLoop(ref, items, cb) {
+  const itemLength = items.length;
+  for (var i = 0; i < itemLength; i++) {
+    if (Array.isArray(items[i])) {
+      loadLoop(ref, items[i], () => {
+        items.shift();
+        loadLoop(ref, items, cb);
+      });
+      break;
+    } else {
+      let type = checkExt(items[i]);
+      loader(type, ref.basepath + items[i], () => {
+        items.shift();
+        if (items.length) {
+          loadLoop(ref, items, cb);
+        } else {
+          cb();
+        }
+      });
+      break;
+    }
   }
 }
 
-function loadDep(dep, loadFn, cb) {
-  // console.log(dep.assets);
-
-  loadFn(dep.assets, dep.basepath);
-  // if (headers.length) {
-  //   loadHeaders(headers.reverse(), function() {
-  //     loadLoop(deps);
-  //   });
+function checkExt(path) {
+  const css = /\.css$/,
+    js = /\.js$/;
+  if (css.test(path)) { return 'css'; }
+  if (js.test(path)) { return 'js'; }
+  return null;
 }
 
-function getAssets(dep) {
-
-  // console.log(dep);
-  // console.log(scripts);
-  // need to get basepath
-  // start by resolving and loading header files
-  // for footer files, write them afterwards by using a dom event trigger for onload
-  // when onload fires, resolve their load order, then load the remaining files
-
-  // debugger;
-
+function loader(type, path, cb) {
+  if (type === 'js') {
+    loadJS(path, () => {
+      cb();
+    });
+  } else if (type === 'css') {
+    let ss = styles.loadCSS(path);
+    styles.onloadCSS(ss, () => {
+      cb();
+    });
+  }
 }

@@ -1,4 +1,4 @@
-import plugin from "./plugin.json";
+import plugin from './plugin.json';
 
 export default function() {
 
@@ -14,63 +14,10 @@ export default function() {
     priority: plugin.priority
   };
 
-  const charts = window.__charttool;
+  const charts = window.__charttoolversion;
 
-  if (charts) {
-
-    // find most common version and load that
-    let j = charts.length;
-
-    const versions = [];
-
-    while (j--) {
-      versions.push(charts[j].data.version);
-    }
-
-    pluginObj.assets = plugin.versions[mode(versions.sort())];
-
-  } else {
-
-    // using 1.0.2
-    pluginObj.assets = plugin.versions["1.0.2"];
-
-  }
+  pluginObj.assets = charts ? plugin.versions[charts] : plugin.versions['1.0.2'];
 
   return pluginObj;
-
-}
-
-// taken from http://stackoverflow.com/a/1053865/602748
-function mode(array) {
-
-  let l = array.length;
-
-  if (l === 0) {
-    return null;
-  }
-
-  const modeMap = {};
-
-  let maxEl = array[0],
-    maxCount = 1;
-
-  while (l--) {
-
-    let el = array[l];
-
-    if (modeMap[el] == null) {
-      modeMap[el] = 1;
-    } else {
-      modeMap[el]++;
-    }
-
-    if (modeMap[el] > maxCount) {
-      maxEl = el;
-      maxCount = modeMap[el];
-    }
-
-  }
-
-  return maxEl;
 
 }

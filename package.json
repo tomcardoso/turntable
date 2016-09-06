@@ -4,8 +4,9 @@
   "description": "A simple, extensible utility for ",
   "main": "index.js",
   "scripts": {
-    "npm build": "gulp build",
-    "npm build:prod": "gulp build:prod",
+    "build": "gulp build",
+    "build:prod": "gulp build:prod",
+    "start": "http-server && gulp watch"
   },
   "keywords": [],
   "author": "Tom Cardoso",

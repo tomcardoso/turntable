@@ -5,10 +5,10 @@
   "versions": {
     "3.1.0": {
       "header": [
-        "/3.3.7/js/bootstrap.min.js"
+        "/3.3.7/css/bootstrap.min.css"
       ],
       "footer": [
-        "/3.3.7/css/bootstrap.min.css"
+        "/3.3.7/js/bootstrap.min.js"
       ]
     }
   }
