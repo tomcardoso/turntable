@@ -8,7 +8,7 @@ What do you do?
 
 ![](http://i.giphy.com/J0u9EIYUoAJwI.gif)
 
-This is a classic problem for anyone working in a content management system over several years. I was curious if I could come up with a client-side-only solution, so I wrote up *turntable*.
+This is a classic problem for anyone working in a content management system over several years. I was curious if I could come up with a client-side-only solution, so I wrote up **turntable**.
 
 ### How it works
 
@@ -50,7 +50,7 @@ In the case above, `bundle.min.css` and `d3.min.js` will be loaded before `bundl
 
 ### Why?
 
-This is mostly a proof-of-concept, and I wanted to learn a bit more about synchronous and asynchronous JS and CSS requests and get a bit more familiar with ES6-style imports. I was also trying to make the library as lean as possible: there are no dependencies beyond the Filament Group's [loadJS](https://github.com/filamentgroup/loadJS) and [loadCSS](https://github.com/filamentgroup/loadCSS). All together, *turntable* comes in under 1kb minified and gzipped without defined plugins.
+This is mostly a proof-of-concept, and I wanted to learn a bit more about synchronous and asynchronous JS and CSS requests and get a bit more familiar with ES6-style imports. I was also trying to make the library as lean as possible: there are no dependencies beyond the Filament Group's [loadJS](https://github.com/filamentgroup/loadJS) and [loadCSS](https://github.com/filamentgroup/loadCSS). All together, **turntable** comes in under 1kb minified and gzipped without defined plugins.
 
 ### Setup
 
@@ -79,7 +79,7 @@ $ npm build:prod
 
 ### Author
 
-[It me](http://www.tomcardoso.com).
+[It me](http://www.twitter.com/tom_cardoso).
 
 ### License
 
