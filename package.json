@@ -1,0 +1,33 @@
+{
+  "name": "turntable",
+  "version": "1.0.0",
+  "description": "A simple, extensible utility for ",
+  "main": "index.js",
+  "scripts": {
+    "npm build": "gulp build",
+    "npm build:prod": "gulp build:prod",
+  },
+  "keywords": [],
+  "author": "Tom Cardoso",
+  "private": true,
+  "engines": {
+    "node": ">=6.1.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015-rollup": "^1.1.1",
+    "del": "^2.2.1",
+    "eslint": "^3.2.2",
+    "gulp": "^3.9.0",
+    "gulp-size": "^2.1.0",
+    "rollup": "^0.34.3",
+    "rollup-plugin-babel": "^2.5.0",
+    "rollup-plugin-commonjs": "^3.3.1",
+    "rollup-plugin-eslint": "^2.0.2",
+    "rollup-plugin-json": "^2.0.1",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-strip": "^1.1.1",
+    "rollup-plugin-uglify": "^1.0.1",
+    "run-sequence": "^1.1.4"
+  },
+  "dependencies": {}
+}

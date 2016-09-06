@@ -1,0 +1,10 @@
+{
+  "name": "jquery",
+  "priority": 200,
+  "basepath": "https://code.jquery.com",
+  "versions": {
+    "3.1.0": {
+      "footer": [ "/jquery-3.1.0.min.js" ]
+    }
+  }
+}

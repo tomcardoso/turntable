@@ -1,0 +1,28 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "array-bracket-spacing": ["error", "never"],
+    "computed-property-spacing": ["error", "never"],
+    "dot-notation": ["warn"],
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "no-inline-comments": "off",
+    "no-param-reassign": ["error", {
+      "props": false
+    }],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "space-in-parens": ["error","never"]
+  },
+  "globals": {
+    "DocumentTouch": false
+  }
+}

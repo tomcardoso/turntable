@@ -1,0 +1,20 @@
+{
+  "name": "chart-tool",
+  "priority": 100,
+  "basepath": "http://beta.images.theglobeandmail.com/static/templates/tools",
+  "versions": {
+    "1.0.2": {
+      "header": [ "/charts/1.0.0/scripts/gm-chart-loader.js" ],
+      "footer": [
+        [ "/charts/1.0.0/css/gm-chart-lib.css", "/charts/1.0.0/scripts/d3.min.js" ],
+        "/charts/1.0.0/scripts/gm-chart-lib.js"
+      ]
+    },
+    "1.1.0": {
+      "footer": [
+        [ "/chart-tool/1.1.0/bundle.min.css", "/chart-tool/1.1.0/d3.min.js" ],
+        "/chart-tool/1.1.0/bundle.min.js"
+      ]
+    }
+  }
+}
