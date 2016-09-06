@@ -4,9 +4,11 @@
   "description": "A simple, extensible utility for ",
   "main": "index.js",
   "scripts": {
-    "build": "gulp build",
-    "build:prod": "gulp build:prod",
-    "start": "http-server && gulp watch"
+    "build": "./node_modules/.bin/gulp build",
+    "build:prod": "./node_modules/.bin/gulp build:prod",
+    "start": "npm run watch && npm run serve",
+    "watch": "./node_modules/.bin/gulp watch",
+    "serve": "./node_modules/.bin/http-server"
   },
   "keywords": [],
   "author": "Tom Cardoso",
@@ -20,6 +22,7 @@
     "eslint": "^3.2.2",
     "gulp": "^3.9.0",
     "gulp-size": "^2.1.0",
+    "http-server": "^0.9.0",
     "rollup": "^0.34.3",
     "rollup-plugin-babel": "^2.5.0",
     "rollup-plugin-commonjs": "^3.3.1",
